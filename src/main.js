@@ -1,8 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import ax from './code/jwt/ax'
 
+import store from '@/code/Store'
+Vue.prototype.$ax = ax
 Vue.config.productionTip = false
-
+Vue.use(ElementUI,{ size: 'small'});
 new Vue({
   render: h => h(App),
+  beforeCreate() {
+    Vue.prototype.$bus = this
+  },
+  store
 }).$mount('#app')
